@@ -34,7 +34,32 @@ void setup(){
 }
 
 void draw(){
+    clear();
 
+    for(int i = 0; i < width + 2; i++){
+        mvprintw(0, i, "+");
+    }
+    for(int i = 0; i < height + 2; i++){
+        for(int j = 0; j < width + 2; j++){
+            if(i == 0 | i == 21){
+                mvprintw(i, j, "+");
+            }
+            else if(j == 0 | j == 21){
+                mvprintw(i, j, "+");
+            }
+            else if(i == y && j == x){
+                mvprintw(i, j, "0");
+            }
+            else if(i == fruitY && j == fruitX){
+                mvprintw(i, j, "@");
+            }
+        }
+    }
+    mvprintw(23, 0, "Score %d", score);
+    refresh();
+
+    getch();
+    endwin();
 }
 
 void input(){
