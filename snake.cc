@@ -42,7 +42,7 @@ void Draw(){
             
             if(j == 0 | j == (width -1)){
 		//we are going to print the walls here
-		mvprintw(j,i,"#");
+		mvprintw(i+1,j,"#");
 		}
 	    if(i == y && j ==  x){
 		mvprintw(i,j,"O");;
