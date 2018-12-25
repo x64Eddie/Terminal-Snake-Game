@@ -26,7 +26,7 @@ void Setup(){
 }
 
 void Draw(){
-    system("cls");//clear the teminal window
+    system("clear");//clear the teminal window
 
     //top wall
     for(int i = 0; i < width; i++){
@@ -37,20 +37,25 @@ void Draw(){
     for(int i = 0; i < height; i++){
         for(int j = 0; j < width; j ++){
             
-            if(j == 0 | j == (width - 1)){
-                //we are going to print the walls here
-                std::cout << "#";
-            }
-            else{
-                std::cout << " ";
-            }
+            if(j == 0 | j == (width -1)){
+		//we are going to print the walls here
+		std::cout << "#";
+		}
+	    else{
+		std::cout << " ";
+		}
         }
+	std::cout << std::endl;
     }
 
     //bottom wall
     for(int i = 0; i < width; i++){
         std::cout << "#";
     }
+
+    //we are going to skip a line then we are going to put the score below the window
+    std::cout << std::endl;
+    std::cout << "Score: " << score << std::endl;
 }
 
 void Input(){
@@ -63,10 +68,11 @@ void Logic(){
 
 int main(){
     Setup();
-    while(!gameOver){
-        Draw();
-        Input();
-        Logic();
-    }
+	Draw();
+//    while(!gameOver){
+//        Draw();
+//        Input();
+//        Logic();
+// }
     return 0;
 }
