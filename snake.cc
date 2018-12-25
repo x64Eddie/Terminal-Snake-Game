@@ -1,5 +1,5 @@
 
-#include <iostram>
+#include <iostream>
 
 bool gameOver;
 const int width = 20, height = 20;
@@ -10,7 +10,7 @@ enum Direction {
     RIGHT,
     UP,
     DOWN
-}
+};
 Direction dir;
 
 void Setup(){
@@ -26,30 +26,30 @@ void Setup(){
 }
 
 void Draw(){
-    system("cls")//clear the teminal window
+    system("cls");//clear the teminal window
 
     //top wall
     for(int i = 0; i < width; i++){
-        count << "#";
+        std::cout << "#";
     }
-    count << endl;
+    std::cout << std::endl;
 
     for(int i = 0; i < height; i++){
         for(int j = 0; j < width; j ++){
             
             if(j == 0 | j == (width - 1)){
                 //we are going to print the walls here
-                count << "#";
+                std::cout << "#";
             }
             else{
-                count << " ";
+                std::cout << " ";
             }
         }
     }
 
     //bottom wall
     for(int i = 0; i < width; i++){
-        count << "#";
+        std::cout << "#";
     }
 }
 
