@@ -1,3 +1,3 @@
 output: snake.o
-	g++ snake.cc -o output
+	g++ snake.cc -lcurses
 

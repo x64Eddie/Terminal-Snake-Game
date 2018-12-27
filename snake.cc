@@ -5,6 +5,7 @@
 bool gameOver;
 const int width = 20, height = 20;
 int x, y, fruitX, fruitY, score;
+
 enum Direction {
     STOP = 0,
     LEFT,
@@ -37,7 +38,7 @@ void Draw(){
         mvprintw(0,i,"#");
     }
 
-    for(int i = 0; i < height; i++){
+    for(int i = 0; i < height-1; i++){
         for(int j = 0; j < width; j ++){
             
             if(j == 0 | j == (width -1)){
@@ -45,13 +46,13 @@ void Draw(){
 		mvprintw(i+1,j,"#");
 		}
 	    if(i == y && j ==  x){
-		mvprintw(i,j,"O");;
+		mvprintw(i,j,"@");;
 		}
 	    else if(i == fruitX && j == fruitY){
 		mvprintw(i,j,"F");
 		}
 	    else{
-		mvprintw(i,j," ");
+//		mvprintw(i,j," ");
 		}
         }
     }
@@ -62,7 +63,7 @@ void Draw(){
     }
 
     //we are going to skip a line then we are going to put the score below the window
-    mvprintw(height+1, 0,"Score:");
+    mvprintw(height+1, 0,"Score: %d",score);
 }
 
 int kbhit(void){
@@ -130,7 +131,6 @@ int main(){
     Setup();
     while(!gameOver){
         Draw();
-	std::cout << "pressed";
         Input();
         Logic();
 	 }
