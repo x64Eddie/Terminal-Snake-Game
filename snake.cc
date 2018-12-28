@@ -30,6 +30,7 @@ void Setup(){
     refresh();
 }
 
+//This is going to draw the figures in to the screen
 void Draw(){
 //    system("clear");//clear the teminal window
     clear();
@@ -124,7 +125,9 @@ void Logic(){
 			y--;
 			break;
 	}
-
+    if(x > width || x < 0 || y > height || y < 0){
+        gameOver = true;
+    }
 }   
 
 int main(){
