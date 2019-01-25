@@ -65,6 +65,8 @@ void Draw(){
 
     //we are going to skip a line then we are going to put the score below the window
     mvprintw(height+1, 0,"Score: %d",score);
+
+	refresh();
 }
 
 int kbhit(void){
@@ -80,30 +82,34 @@ int kbhit(void){
 
 
 void Input(){
-	if(kbhit()){
-		switch(getch()){
-			case 'a':
-				dir = LEFT;
-				refresh();				
-				break;
-			case 'd':
-				dir = RIGHT;
-				refresh();
-				break;
-			case 's':
-				dir = DOWN;
-				refresh();
-				break;
-			case 'w':
-				dir = UP;
-				refresh();
-				break;
-			case 'x':
-				gameOver = false;
-				refresh();
-				break;
-		}
+
+	keypad(stdscr, TRUE);
+	halfdelay(1);
+	int c = getch();
+
+	switch(c){
+		case KEY_LEFT:
+			dir = LEFT;
+			refresh();				
+			break;
+		case KEY_RIGHT:
+			dir = RIGHT;
+			refresh();
+			break;
+		case KEY_DOWN:
+			dir = DOWN;
+			refresh();
+			break;
+		case KEY_UP:
+			dir = UP;
+			refresh();
+			break;
+		case 113:
+			gameOver = false;
+			refresh();
+			break;
 	}
+	
 	
 	
 }
@@ -139,14 +145,13 @@ void Logic(){
 
 int main(){
     Setup();
-
-
-	do{
-		printf("Update");
+	while(!gameOver){
         Draw();
         Input();
         Logic();
-	}while(!gameOver);
+	}
+	getch();
+	endwin();
     
     return 0;
 }
