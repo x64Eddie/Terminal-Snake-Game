@@ -127,10 +127,10 @@ void Logic(){
 			x--;
 			break;
 		case UP:
-			y++;
+			y--;
 			break;
 		case DOWN:
-			y--;
+			y++;
 			break;
 	}
     if(x > width || x < 0 || y > height || y < 0){
