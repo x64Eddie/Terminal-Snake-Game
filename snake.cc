@@ -139,10 +139,14 @@ void Logic(){
 
 int main(){
     Setup();
-    while(!gameOver){
+
+
+	do{
+		printf("Update");
         Draw();
         Input();
         Logic();
-	 }
+	}while(!gameOver);
+    
     return 0;
 }
