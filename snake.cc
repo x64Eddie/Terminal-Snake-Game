@@ -5,6 +5,8 @@
 bool gameOver;
 const int width = 20, height = 20;
 int x, y, fruitX, fruitY, score;
+int tailX[100], tailY[100];
+int nTail = 0;
 
 enum Direction {
     STOP = 0,
@@ -53,7 +55,11 @@ void Draw(){
 		mvprintw(i,j,"F");
 		}
 	    else{
-//		mvprintw(i,j," ");
+			for(int k = 0; k < nTail; k++){
+				if(tailX[k] == j && tailY[k] == i){
+					mvprintw(i, j, "@");
+				}
+			}
 		}
         }
     }
@@ -67,17 +73,6 @@ void Draw(){
     mvprintw(height+1, 0,"Score: %d",score);
 
 	refresh();
-}
-
-int kbhit(void){
-        int ch = getch();
-        if(ch != ERR){
-                ungetch(ch);
-                return 1;
-        }
-        else{
-                return 0;
-        }
 }
 
 
@@ -115,6 +110,13 @@ void Input(){
 }
 
 void Logic(){
+
+	int prevX = tailX[0];
+	int prevY = tailY[0];
+	int prev2X, prev2Y;
+	tailX[0] = x;
+	tailY[0] = y;
+
 	switch(dir){
 		case STOP:
 			break;
@@ -137,8 +139,15 @@ void Logic(){
 
 	if(x == fruitX && y == fruitY){
 		score += 10;
+		nTail++;
 		fruitX = (rand()%width);
     	fruitY = (rand()%height);
+	}
+
+	for(int i = 0; i < nTail; i++){
+		if(tailX[i] == x && tailY[i] == y){
+			gameOver = true;
+		}
 	}
 
 }   
