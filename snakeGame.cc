@@ -70,9 +70,8 @@ void Draw(){
     }
 
     //we are going to skip a line then we are going to put the score below the window
-    mvprintw(height+1, 0,"Score: %d  %d",score, x);
-    mvprintw(height+2, 0,"Fruit Coordinates: %d , %d",fruitX, fruitY);
-    mvprintw(height+3, 0,"Coordinates: %d , %d",x, y);
+    mvprintw(height+1, 0,"Score: %d",score);
+   
 
 
 	refresh();
