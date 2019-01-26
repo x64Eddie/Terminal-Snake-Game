@@ -4,7 +4,7 @@
 
 bool gameOver;
 const int width = 20, height = 20;
-int x, y, fruitX, fruitY, score;
+int x, y, fruitY, fruitX, score;
 int tailX[100], tailY[100];
 int nTail = 0;
 
@@ -70,7 +70,10 @@ void Draw(){
     }
 
     //we are going to skip a line then we are going to put the score below the window
-    mvprintw(height+1, 0,"Score: %d",score);
+    mvprintw(height+1, 0,"Score: %d  %d",score, x);
+    mvprintw(height+2, 0,"Fruit Coordinates: %d , %d",fruitX, fruitY);
+    mvprintw(height+3, 0,"Coordinates: %d , %d",x, y);
+
 
 	refresh();
 }
@@ -133,15 +136,16 @@ void Logic(){
 			y++;
 			break;
 	}
-    if(x > width || x < 0 || y > height || y < 0){
+    if(x > width -1 || x < 1 || y > height-1 || y < 1){
         gameOver = true;
     }
 
-	if(x == fruitX && y == fruitY){
+	if(x == fruitY && y == fruitX){
 		score += 10;
+		fruitX = (rand()% width) -1;
+    	fruitY = (rand()% height) -1;
+		//mvprintw(height+4, 0,"Collision at: %d , %d",fruitX, fruitY);
 		nTail++;
-		fruitX = (rand()%width);
-    	fruitY = (rand()%height);
 	}
 
 	for(int i = 0; i < nTail; i++){
@@ -158,6 +162,7 @@ int main(){
         Draw();
         Input();
         Logic();
+//        usleep(1000);
 	}
 	getch();
 	endwin();
