@@ -5,13 +5,21 @@
  **/ 
 class Snake{
     private:
+        int winW, winH;
         int coorX, coorY;
         int leftKey, rightKey, upKey, downKey;
+        
+        //Going to be printing the snake in the game
+        void printing(){
+            
+        }
 
     public:
-        Snake(int startX, int startY){
+        Snake(int startX, int startY, int windowHeight, int windowWidth){
             coorX = startX;
             coorY = startY;
+            winW = windowWidth;
+            winH = windowHeight;
         }
         void setControls(int left, int right, int up, int down){
             leftKey = left;
