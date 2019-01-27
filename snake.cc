@@ -9,11 +9,6 @@ class Snake{
         int coorX, coorY;
         int leftKey, rightKey, upKey, downKey;
         
-        //Going to be printing the snake in the game
-        void printing(){
-            
-        }
-
     public:
         Snake(int startX, int startY, int windowHeight, int windowWidth){
             coorX = startX;
@@ -30,5 +25,8 @@ class Snake{
         void initSnake(){
 
         }
-
+        //Going to be printing the snake in the game
+        void printing(){
+            
+        } 
 };
