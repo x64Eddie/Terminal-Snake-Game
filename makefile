@@ -1,3 +1,2 @@
 output: snake.o
-	g++ snakeGame.cc -lcurses
-
+	g++ -o snakeGame snakeGame.cc -lcurses
